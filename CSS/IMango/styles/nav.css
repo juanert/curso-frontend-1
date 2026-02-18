@@ -1,0 +1,29 @@
+nav {
+ /*
+  Display es una propiedad que determina como se muestra un elemento o si se muestra
+  Sus posibles valores son:
+  - block: El elemento se muestra como un bloque, ocupando todo el ancho disponible y comenzando en una nueva línea.
+  - inline: El elemento se muestra en línea, ocupando solo el espacio necesario y permitiendo que otros elementos se muestren a su lado.
+  - inline-block: El elemento se muestra en línea pero se comporta como un bloque, permitiendo establecer dimensiones y márgenes.
+  - none: El elemento no se muestra en absoluto.
+  - flex: El elemento se muestra como un contenedor flexible, permitiendo organizar sus elementos hijos de manera flexible.
+  - grid: El elemento se muestra como un contenedor de cuadrícula, permitiendo organizar sus elementos hijos en filas y columnas.
+  - hidden: El elemento se muestra pero no es visible, ocupando espacio en el diseño pero sin mostrar su contenido.
+ */
+ display: flex;
+}
+
+nav #menu_desktop {
+  display: none;
+}
+
+nav #menu_mobile {
+  display: flex;
+  justify-content:space-between;
+  width: 100%;
+}
+
+nav #menu_mobile > div{
+  display: flex;
+  gap: 10px;
+}
