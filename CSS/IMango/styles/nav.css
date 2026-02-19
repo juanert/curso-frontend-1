@@ -10,20 +10,90 @@ nav {
   - grid: El elemento se muestra como un contenedor de cuadrícula, permitiendo organizar sus elementos hijos en filas y columnas.
   - hidden: El elemento se muestra pero no es visible, ocupando espacio en el diseño pero sin mostrar su contenido.
  */
+  /*
+    Por defecto, cuando creas un elemento con display flex, este se comporta como
+    una fila. 
+  */
  display: flex;
 }
 
 nav #menu_desktop {
+  /* En este caso, el menu de escritorio se oculta por defecto
+      y solo se muestra en pantallas grandes */
   display: none;
 }
 
 nav #menu_mobile {
+  /* En este caso, el menu de móvil se muestra por defecto
+      y solo se oculta en pantallas grandes */
   display: flex;
+  /*
+    justify-content es una propiedad que se utiliza en contenedores flex para 
+    alinear los elementos hijos a lo largo del eje principal (horizontal por 
+    defecto).
+
+    Sus posibles valores son:
+    - flex-start: Alinea los elementos al inicio del contenedor.
+    - flex-end: Alinea los elementos al final del contenedor.
+    - center: Alinea los elementos en el centro del contenedor.
+    - space-between: Distribuye los elementos con espacio entre ellos, dejando el primer elemento al inicio y el último al final del contenedor.
+    - space-around: Distribuye los elementos con espacio alrededor de ellos, dejando espacio igual a la mitad entre el primer elemento y el borde del contenedor, y el último elemento y el borde del contenedor.
+      - space-evenly: Distribuye los elementos con espacio igual entre ellos, incluyendo el espacio antes del primer elemento y después del último elemento.
+  */
   justify-content:space-between;
+  padding: 12px 20px;
+  /*
+  width es una propiedad que establece el ancho de un elemento.
+  En este caso quiero que este menú ocupe todo el ancho disponible, para que los elementos se distribuyan correctamente.
+  */
   width: 100%;
 }
 
+/*
+  Al utilizar > estamos seleccionando el elemento div que es hijo directo de #menu_mobile, 
+  esto es importante porque si no, se aplicaría a todos los divs dentro de #menu_mobile, 
+  incluyendo los que están dentro del div que contiene el texto "Buscar".
+*/
 nav #menu_mobile > div{
   display: flex;
   gap: 10px;
+}
+
+/*
+  @media es una regla de CSS que se utiliza para aplicar estilos específicos a diferentes tamaños de pantalla o dispositivos. 
+  Permite crear diseños responsivos que se adaptan a diferentes condiciones de visualización.
+
+  Las medidas estandares para las pantallas son:
+
+  Extra small devices (phones, 600px and down)
+  @media only screen and (max-width: 600px) {...}
+
+  Small devices (portrait tablets and large phones, 600px and up) 
+  @media only screen and (min-width: 600px) {...}
+
+  Medium devices (landscape tablets, 768px and up) 
+  @media only screen and (min-width: 768px) {...}
+
+  Large devices (laptops/desktops, 992px and up) 
+  @media only screen and (min-width: 992px) {...}
+
+  Extra large devices (large laptops and desktops, 1200px and up) 
+  @media only screen and (min-width: 1200px) {...}
+
+*/
+
+@media only screen and (min-width: 992px){
+  nav #menu_desktop{
+    /* En este caso, el menu de escritorio se muestra en pantallas grandes */
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 20px;
+  }
+
+  nav #menu_mobile{
+    /* En este caso, el menu de móvil se oculta en pantallas grandes */
+    display: none;
+  }
 }
