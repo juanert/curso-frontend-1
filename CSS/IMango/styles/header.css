@@ -1,0 +1,107 @@
+header {
+  display: flex;
+  /*
+    flex-direction me permite cambiar la dirección de los elementos hijos
+     row: los elementos se alinean horizontalmente (por defecto)
+     column: los elementos se alinean verticalmente
+  */
+  flex-direction: column;
+  /*
+    align-items me permite alinear los elementos hijos a lo largo del eje secundario (vertical por defecto).
+    Posibles valores:
+    - flex-start: Los elementos se alinean al inicio del eje secundario.
+    - flex-end: Los elementos se alinean al final del eje secundario.
+    - center: Los elementos se alinean en el centro del eje secundario.
+    - baseline: Los elementos se alinean según su línea base.
+    - stretch: Los elementos se estiran para llenar el contenedor (por defecto).
+  */
+  align-items: center;
+  padding: 30px 20px;
+  background-image: url("https://www.apple.com/v/home/cl/images/heroes/iphone-family/hero_iphone_family__fuz5j2v5xx6y_large.jpg");
+  /*
+    background-size me permite controlar el tamaño de la imagen de fondo.
+    Posibles valores:
+    - cover: La imagen se escala para cubrir todo el contenedor, manteniendo su proporción. Puede recortar partes de la imagen si las proporciones no coinciden.
+    - contain: La imagen se escala para caber dentro del contenedor, manteniendo su proporción. Puede dejar espacio vacío si las proporciones no coinciden.
+     - auto: La imagen mantiene su tamaño original.
+    - 100% 100%: La imagen se estira para llenar todo el contenedor, sin mantener su proporción.
+    - Un valor específico (por ejemplo, 200px 300px): La imagen se escala a las dimensiones especificadas, sin mantener su proporción.
+  */
+  background-size: cover;
+  /*
+    background-repeat me permite controlar si la imagen de fondo se repite o no.
+    Posibles valores:
+    - repeat: La imagen se repite tanto horizontal como verticalmente (por defecto).
+    - no-repeat: La imagen no se repite, solo se muestra una vez.
+    - repeat-x: La imagen se repite solo horizontalmente.
+    - repeat-y: La imagen se repite solo verticalmente.
+      - space: La imagen se repite, pero se distribuye de manera que haya espacio entre las copias de la imagen.
+      - round: La imagen se repite, pero se escala para que encaje exactamente en el contenedor sin recortarse ni dejar espacio.
+  */
+  background-repeat: no-repeat;
+  /*
+  background-position me permite controlar la posición de la imagen de fondo dentro del contenedor.
+  Posibles valores: 
+  - left: La imagen se alinea a la izquierda del contenedor.
+  - right: La imagen se alinea a la derecha del contenedor.
+  - top: La imagen se alinea a la parte superior del contenedor.
+  - bottom: La imagen se alinea a la parte inferior del contenedor.
+  - center: La imagen se centra dentro del contenedor (por defecto).
+    - Un valor específico (por ejemplo, 50% 50%): La imagen se posiciona en el punto especificado dentro del contenedor, donde el primer valor representa la posición horizontal y el segundo valor representa la posición vertical.
+  */
+  background-position: center;
+  /*
+  min-height me permite establecer una altura mínima para el elemento.
+  Esto es útil para asegurarse de que el elemento tenga suficiente espacio para mostrar su contenido, incluso si el contenido es dinámico o si la imagen de fondo no tiene una altura suficiente.
+  posibles valores:
+  - Un valor específico (por ejemplo, 500px): El elemento tendrá una altura mínima de 500 píxeles.
+  - auto: El elemento no tendrá una altura mínima, y su altura se ajustará automáticamente al contenido (por defecto).
+  medidas normalmente utilizadas para pantallas:
+  - vh: Unidad de medida relativa a la altura de la ventana gráfica. 1vh es igual al 1% de la altura de la ventana gráfica.
+  - %: Unidad de medida relativa al elemento contenedor. 100% es igual a la altura del elemento contenedor.
+  */
+  min-height: 500px;
+}
+
+header > h2 {
+  font-size: 48px;
+}
+
+header > h3 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+header > div{
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.boton-destacado {
+  background-color: #0071e3;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+}
+
+.boton {
+  background-color: transparent;
+  color: #0071e3;
+  padding: 6px 20px;
+  border-radius: 25px;
+  /*
+  border me permite establecer un borde alrededor de un elemento.
+  */
+  border: 1px solid #0071e3;
+}
+
+/*
+header > div > button:first-child {
+  background-color: white;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 20px;
+}
+*/

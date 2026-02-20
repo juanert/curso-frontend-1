@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background-color: #0815a6;
+      color: white;
+      font-weight: 100;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .desktop {
+      display: none;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .desktop {
+        display: flex;
+        gap: 12px;
+      }
+
+      .mobile {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <p>Logo</p>
+    <div class="desktop">
+      <p>Acceso</p>
+      <button>Registro</button>
+    </div>
+    <p class="mobile">Menú</p>
+  </nav>
+</body>
+</html>
