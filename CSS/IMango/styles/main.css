@@ -60,19 +60,19 @@ header {
   - vh: Unidad de medida relativa a la altura de la ventana gráfica. 1vh es igual al 1% de la altura de la ventana gráfica.
   - %: Unidad de medida relativa al elemento contenedor. 100% es igual a la altura del elemento contenedor.
   */
-  min-height: 500px;
+  min-height: 600px;
 }
 
-header > h2 {
+header > h2, .ipad > h2, .ipods > h2, .producto > h2 {
   font-size: 48px;
 }
 
-header > h3 {
+header > h3, .ipad > h3, .ipods > h3, .producto > h3 {
   font-size: 24px;
   font-weight: 400;
 }
 
-header > div{
+header > div, .ipad > div, .ipods > div, .producto > div {
   margin-top: 20px;
   display: flex;
   gap: 20px;
@@ -84,6 +84,39 @@ header > div{
   padding: 12px 20px;
   border-radius: 20px;
   border: none;
+  transition: all 0.5s ease;
+}
+
+/*
+  PSEUDOCLASES
+  Las pseudoclases me permiten aplicar estilos a elementos en función de su estado o posición en el documento.
+  Algunos ejemplos de pseudoclases:
+  - :hover: Aplica estilos cuando el usuario pasa el cursor sobre el elemento.
+  - :active: Aplica estilos cuando el elemento está siendo activado (por ejemplo, cuando se hace clic en un botón).
+  - :focus: Aplica estilos cuando el elemento tiene el foco (por ejemplo, cuando se selecciona un campo de formulario).
+  - :first-child: Aplica estilos al primer hijo de un elemento.
+  - :last-child: Aplica estilos al último hijo de un elemento.
+  - :nth-child(n): Aplica estilos al enésimo hijo de un elemento, donde n puede ser un número, una palabra clave (como "odd" o "even"), o una fórmula (como "2n+1").
+  - :not(selector): Aplica estilos a los elementos que no coinciden con el selector
+  - :disabled: Aplica estilos a los elementos que están deshabilitados.
+  - :checked: Aplica estilos a los elementos que están seleccionados (por ejemplo, casillas de verificación o botones de opción).
+*/
+
+.boton-destacado:hover {
+  background-color: transparent;
+  color: #0071e3;
+  border: 1px solid #0071e3;
+  /*
+    transition me permite controlar la velocidad de las transiciones entre estados de un elemento.
+    Posibles valores:
+    - all: Aplica la transición a todas las propiedades que cambian (por defecto).
+    - Un valor específico (por ejemplo, background-color): Aplica la transición solo a la propiedad especificada.
+    - duration: Especifica la duración de la transición (por ejemplo, 0.3s para 300 milisegundos).
+    - timing-function: Especifica la función de temporización de la transición (por ejemplo, ease, linear, ease-in, ease-out, etc.).
+    - delay: Especifica un retraso antes de que comience la transición (por ejemplo, 0.1s para 100 milisegundos).
+  */
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .boton {
@@ -95,6 +128,15 @@ header > div{
   border me permite establecer un borde alrededor de un elemento.
   */
   border: 1px solid #0071e3;
+  transition: all 0.5s ease;
+}
+
+.boton:hover {
+  background-color: #0071e3;
+  color: white;
+  border: none;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 /*
@@ -105,3 +147,80 @@ header > div > button:first-child {
   border-radius: 20px;
 }
 */
+
+/*----SECCIONES----*/
+
+.ipad, .ipods, .producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  margin: 20px 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 600px;
+}
+
+.ipad {
+  background-image: url("https://www.apple.com/v/home/cl/images/heroes/ipad-air/hero_ipad_air_avail__c34ycq52exg2_large.jpg");
+}
+
+.ipods {
+  background-image: url("https://www.apple.com/v/home/cl/images/heroes/airpods-pro-3/hero_airpodspro_3__dn7gz4l22ree_large.jpg");
+}
+
+.iwatch {
+  background-image: url("https://www.apple.com/la/home/promos/25_watch-series-11_09/images/promo_apple_watch_series_11__b63hxviqvonm_large.jpg");
+}
+
+.macbookair{
+  background-image: url("https://www.apple.com/v/home/cl/images/promos/macbook-air/promo_macbook_air__fqowrtnxewqe_large.jpg");
+}
+
+.macbookpro {
+  color: white;
+  background-image: url("https://www.apple.com/v/home/cl/images/promos/macbook-pro-m5/promo_macbook_pro_m5__gnwzdhijhm6a_large.jpg");
+}
+
+.ipadpro {
+  color: white;
+  background-image: url("https://www.apple.com/v/home/cl/images/promos/ipad-pro/promo_ipad_pro__c529dk533k4m_large.jpg");
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.producto {
+    /*
+    el !important me permite darle prioridad a una regla de estilo sobre otras reglas que puedan 
+    entrar en conflicto. Esto es útil cuando quieres asegurarte de que un estilo específico se aplique, 
+    incluso si hay otras reglas que podrían anularlo.
+
+    Sin embargo, el uso de !important debe ser limitado, ya que puede dificultar el mantenimiento del código 
+    y hacer que sea más difícil de depurar. Es recomendable usarlo solo como último recurso cuando no hay otra 
+    forma de lograr el resultado deseado.
+  */
+  margin: 0!important;
+}
+
+.slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 80px;
+}
+
+.slider-item {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
