@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      nav {
+        /*
+        Position es una propiedad que nos permite controlar la posicion de un elemento en la pagina, y como se comporta con los demas elementos.
+        Existen 5 valores para esta propiedad:
+        - static: Es el valor por defecto, el elemento se posiciona de acuerdo al flujo normal del documento.
+        - relative: El elemento se posiciona de acuerdo al flujo normal del documento, pero podemos moverlo con las propiedades top, right, bottom y left.
+        - absolute: El elemento se posiciona de acuerdo a su primer ancestro posicionado (es decir, un elemento que tenga una posicion diferente a static), o al viewport si no hay ningun ancestro posicionado. El elemento se saca del flujo normal del documento, por lo que no ocupa espacio.
+        - fixed: El elemento se posiciona de acuerdo al viewport, y se queda fijo en esa posicion aunque se haga scroll. El elemento se saca del flujo normal del documento, por lo que no ocupa espacio.
+        - sticky: El elemento se posiciona de acuerdo al flujo normal del documento, pero se queda fijo en una posicion determinada cuando se hace scroll. El elemento ocupa espacio mientras no se quede fijo, pero cuando se queda fijo se saca del flujo normal del documento y no ocupa espacio.
+      */
+        position: sticky;
+        top: 0;
+        background-color: blanchedalmond;
+        z-index: 1;
+      }
+      #uno,
+      #dos,
+      #tres,
+      #cuatro {
+        height: 100vh;
+      }
+      #uno {
+        background-color: red;
+        position: relative;
+        z-index: 100;
+      }
+      #dos {
+        background-color: green;
+      }
+      #tres {
+        background-color: blue;
+      }
+      #cuatro {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <p>Esto es la barra de navegacion</p>
+    </nav>
+    <section id="uno">1</section>
+    <section id="dos">2</section>
+    <section id="tres">3</section>
+    <section id="cuatro">4</section>
+  </body>
+</html>

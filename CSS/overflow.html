@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .barra {
+        width: 100%;
+        overflow-x: scroll;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+      }
+      .barra button {
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 20px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      /* Estilos para ocultar la barra de desplazamiento en navegadores WebKit */
+      /* Esto ocultará la barra de desplazamiento en Chrome, Safari y Edge basado en Chromium */
+      .barra::-webkit-scrollbar {
+        display: none;
+      }
+      /* Estilos para ocultar la barra de desplazamiento en Firefox */
+      .barra {
+        scrollbar-width: none; /* Firefox */
+      }
+      /* Estilos para ocultar la barra de desplazamiento en Internet Explorer y Edge Legacy */
+      .barra {
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="barra">
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+      <button>Hola Mundo</button>
+    </div>
+  </body>
+</html>
