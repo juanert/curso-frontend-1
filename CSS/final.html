@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS final</title>
+    <style>
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #3498db;
+        border-radius: 10px;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: movimiento 10s ease-in-out infinite;
+        left: 0;
+      }
+
+      @keyframes movimiento {
+        0% {
+          transform: rotate(0deg);
+          background-color: #3498db;
+          left: 0;
+        }
+        25% {
+          transform: rotate(180deg);
+          background-color: #e74c3c;
+          left: 200px;
+        }
+        75% {
+          transform: rotate(360deg);
+          background-color: #2ecc71;
+          left: 400px;
+        }
+        100% {
+          transform: rotate(0deg);
+          background-color: #3498db;
+          left: 0;
+        }
+      }
+      /*
+        Los pseudo elementos manejan un contenido que no existe en el HTML, es decir, no es un elemento real, pero se puede usar para agregar 
+        contenido adicional a un elemento sin necesidad de modificar el HTML. Se pueden usar para crear efectos visuales, 
+        como agregar decoraciones o estilos adicionales a un elemento.
+      */
+      p::before {
+        content: "Inicio del párrafo - ";
+        color: #e67e22;
+        font-weight: bold;
+      }
+
+      p::after {
+        content: " - Fin del párrafo";
+        color: #e67e22;
+        font-weight: bold;
+      }
+
+      p::first-letter {
+        font-size: 2em;
+        color: #9b59b6;
+      }
+
+      p::first-line {
+        font-weight: bold;
+        color: #34495e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cuadrado"></div>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate
+      accusamus similique dolorem, architecto est culpa ullam totam consequuntur
+      officia delectus atque ipsa ut eum esse excepturi mollitia, voluptatum,
+      iusto ipsum?
+    </p>
+  </body>
+</html>
