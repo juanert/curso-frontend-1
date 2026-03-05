@@ -4,29 +4,144 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Youtube</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <nav class="cuadricula tres-columnas padding-general">
       <div class="izquierda fila contenido-izquierda separacion">
         <i class="fa-solid fa-bars"></i>
-        <img src="./logo.svg" alt="logo de youtube">
+        <img src="./logo.svg" alt="logo de youtube" />
       </div>
       <div class="centro fila centrar-contenido separacion desktop">
         <div id="buscador" class="barra fila centrar-contenido">
-          <input type="text" placeholder="Buscar">
+          <input type="text" placeholder="Buscar" />
           <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <button class="icono"><i class="fa-solid fa-microphone"></i></button>
       </div>
       <div class="derecha fila contenido-derecha separacion">
-        <button class="icono mobile"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button class="icono mobile"><i class="fa-solid fa-microphone"></i></button>
+        <button class="icono mobile">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button class="icono mobile">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
         <button class="icono"><i class="fa-solid fa-video"></i></button>
         <button class="icono"><i class="fa-solid fa-bell"></i></button>
         <button class="icono"><i class="fa-solid fa-user"></i></button>
       </div>
     </nav>
+    <main class="cuadricula">
+      <aside class="desktop columna">
+        <div class="fila columna centrar-contenido">
+          <i class="fa-solid fa-house"></i>
+          <p>Inicio</p>
+        </div>
+        <div class="fila columna centrar-contenido">
+          <i class="fa-brands fa-youtube"></i>
+          <p>Shorts</p>
+        </div>
+        <div class="fila columna centrar-contenido">
+          <i class="fa-solid fa-play"></i>
+          <p>Suscripciones</p>
+        </div>
+        <div class="fila columna centrar-contenido">
+          <i class="fa-solid fa-user"></i>
+          <p>Tú</p>
+        </div>
+      </aside>
+      <div class="fila columna">
+        <section id="categorias" class="fila">
+          <button>Todo</button>
+          <button>Música</button>
+          <button>Anime</button>
+          <button>Deportes</button>
+          <button>Noticias</button>
+          <button>Entretenimiento</button>
+          <button>Educación</button>
+          <button>Gaming</button>
+          <button>Viajes</button>
+          <button>Comida</button>
+          <button>Moda</button>
+          <button>Salud</button>
+          <button>Tecnología</button>
+        </section>
+        <section id="videos" class="cuadricula">
+          <div class="video">
+            <img
+              src="https://i.ytimg.com/vi/XSFxZ5cf5xo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC_7jMGczk-KOYQexPF-aDXSPkBCA"
+              alt="video"
+            />
+            <div id="video_info" class="cuadricula">
+              <div>
+                <img
+                  src="https://yt3.ggpht.com/uSF1e3JEzmy2sqsRvW_dBjSRG6jptqFd0RGiba9dvSIbF7UbZsHDMvsiWd5ZRZyAn0LFEbVMUg=s68-c-k-c0x00ffffff-no-rj"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h2>La nueva forma de programar (Sin ViveCoding)</h2>
+                <p>BettaTech</p>
+                <p>6,3 K visualizaciones • hace 5 horas</p>
+              </div>
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+          </div>
+          <div class="video">
+            <img
+              src="https://i.ytimg.com/vi/XSFxZ5cf5xo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC_7jMGczk-KOYQexPF-aDXSPkBCA"
+              alt="video"
+            />
+            <div id="video_info" class="cuadricula">
+              <div>
+                <img
+                  src="https://yt3.ggpht.com/uSF1e3JEzmy2sqsRvW_dBjSRG6jptqFd0RGiba9dvSIbF7UbZsHDMvsiWd5ZRZyAn0LFEbVMUg=s68-c-k-c0x00ffffff-no-rj"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h2>La nueva forma de programar (Sin ViveCoding)</h2>
+                <p>BettaTech</p>
+                <p>6,3 K visualizaciones • hace 5 horas</p>
+              </div>
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+          </div>
+          <div class="video">
+            <img
+              src="https://i.ytimg.com/vi/XSFxZ5cf5xo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC_7jMGczk-KOYQexPF-aDXSPkBCA"
+              alt="video"
+            />
+            <div id="video_info" class="cuadricula">
+              <div>
+                <img
+                  src="https://yt3.ggpht.com/uSF1e3JEzmy2sqsRvW_dBjSRG6jptqFd0RGiba9dvSIbF7UbZsHDMvsiWd5ZRZyAn0LFEbVMUg=s68-c-k-c0x00ffffff-no-rj"
+                  alt=""
+                />
+              </div>
+              <div>
+                <h2>La nueva forma de programar (Sin ViveCoding)</h2>
+                <p>BettaTech</p>
+                <p>6,3 K visualizaciones • hace 5 horas</p>
+              </div>
+              <div>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   </body>
 </html>
