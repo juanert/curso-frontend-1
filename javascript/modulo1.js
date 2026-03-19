@@ -90,23 +90,23 @@ b = c; //barrios
   - Undefined: es un valor indefinido, es decir, no se le ha asignado un valor a la variable, se representa con la palabra reservada undefined, por ejemplo: undefined
   - Object: es un tipo de dato complejo, que puede contener varias propiedades y metodos, se representa con llaves {}, por ejemplo: {nombre: "Juan", edad: 30}
   - Array: es un tipo de dato complejo, que puede contener varios valores, se representa con corchetes [], por ejemplo: [1, 2, 3, 4, 5]
-*/ 
+*/
 
 let texto = "Hola mundo"; // String
 let numero = 10; // Number
 let booleano = true; // Boolean
 let nulo = null; // Null
 let indefinido; // Undefined
-let objeto = {nombre: "Juan", edad: 30}; // Object
+let objeto = { nombre: "Juan", edad: 30 }; // Object
 let arreglo = [1, 2, 3, 4, 5]; // Array
 
 nombre = "Juan";
 apellido = "Rodriguez";
 let nombreCompleto = nombre + " " + apellido; // Concatenacion de strings
-a = 5
-b = "10"
-let suma = a + b
-console.log(suma)
+a = 5;
+b = "10";
+let suma = a + b;
+console.log(suma);
 
 /*
   operadores aritmeticos
@@ -136,7 +136,7 @@ a *= 2; // a = a * 2 = 24
 a /= 4; // a = a / 4 = 6
 a %= 3; // a = a % 3 = 0
 a **= 2; // a = a ** 2 = 0
-a
+a;
 
 /*
   OPERADORES DE COMPARACION
@@ -150,15 +150,121 @@ a
   <= menor o igual que
 */
 
-1 == 2 //false
-2 == 2 //true
-2 == "2" //true
-2 === "2" //false
-2 != 2 //false
-2 != 3 //true
-2 != "2" //false
-2 !== "2" //true
-2 > 3 //false
-3 < 2 //false
-2 >= 2 //true
-0 <= 3 //true
+1 == 2; //false
+2 == 2; //true
+2 == "2"; //true
+2 === "2"; //false
+2 != 2; //false
+2 != 3; //true
+2 != "2"; //false
+2 !== "2"; //true
+2 > 3; //false
+3 < 2; //false
+2 >= 2; //true
+0 <= 3; //true
+
+/*
+  OPERADORES LOGICOS
+  && AND (Y)
+  || OR (O)
+  ! NOT (NO)
+*/
+
+// (Facil)
+var uno = !true || false; //false
+var dos = false && !false; //false
+var tres = true && !false; //true
+
+//(Medio)
+var cuatro = 5 === 5 || !true; //true
+var cinco = !0 || 5 < 0; //true
+var seis = 3 > 4 && !0; //false
+
+//Avanzado
+var siete = ((false || true) && !false && true) || (true && false); //true
+var ocho = 6 === 3 + 3 && 9 / 3 >= 3; //true
+var nueve = !!false || ("1" == 1 && !false === true); //true
+
+//Hardcore
+var diez = !!true === !!(5 >= 5); //true
+var once = !(true && !true === !!(8 === 4 * 2)); //true
+
+//Ultra-Hardcore
+var doce = !(true && !true === !!(16 === 4 * 2 + 8)) !== false; //true
+
+//Leyenda
+var trece = !(
+  (!(!(10 / 5 == "2") === false) != false) === 5 * 5 <= 100 / 4 &&
+  !(1 + 1 !== 10 / 5) !== true
+);
+
+//Inmortal
+var catorce = !!(
+  (10 % 3 != 1 || typeof ("10" - 5) !== "number" || !!([] && {})) &&
+  (12 * 4 === "48" || (7 <= "7" && "7" <= 7) || Boolean(0) === Boolean("0"))
+);
+
+console.log(
+  uno,
+  dos,
+  tres,
+  cuatro,
+  cinco,
+  seis,
+  siete,
+  ocho,
+  nueve,
+  diez,
+  once,
+  doce,
+);
+
+/*
+  Condicionales
+  if (condicion) {
+    //codigo a ejecutar si la condicion es verdadera
+  } else {
+    //codigo a ejecutar si la condicion es falsa
+  }
+*/
+
+let edad = 18;
+
+if (typeof edad !== "number") {
+  console.log("La edad debe ser un numero");
+} else if (edad < 0) {
+  console.log("La edad no puede ser negativa");
+} else if (edad < 18) {
+  console.log("Eres menor de edad");
+} else if (edad >= 18 && edad < 65) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres adulto mayor");
+}
+
+let tiempo = true;
+let dinero = true;
+let ganas = false;
+let campeones_del_mundo = true;
+
+if ((tiempo && dinero && ganas) || campeones_del_mundo) {
+  console.log("Hoy salgo");
+} else {
+  console.log("Hoy no salgo");
+}
+
+let color = "verde";
+
+switch (color) {
+  case "verde":
+    console.log("Avanza");
+    break;
+  case "amarillo":
+    console.log("Precaucion");
+    break;
+  case "rojo":
+    console.log("Alto");
+    break;
+  default:
+    console.log("Color no valido");
+}
