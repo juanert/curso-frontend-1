@@ -268,3 +268,25 @@ switch (color) {
   default:
     console.log("Color no valido");
 }
+
+let num1 = Number(prompt("Ingrese el primer numero"));
+let num2 = Number(prompt("Ingrese el segundo numero"));
+let operacion = prompt(
+  "Ingrese la operacion a realizar (suma, resta, multiplicacion, division)",
+);
+
+if (operacion === "suma") {
+  alert("El resultado de la suma es: " + (num1 + num2));
+} else if (operacion === "resta") {
+  alert("El resultado de la resta es: " + (num1 - num2));
+} else if (operacion === "multiplicacion") {
+  alert("El resultado de la multiplicacion es: " + (num1 * num2));
+} else if (operacion === "division") {
+  if (num2 === 0) {
+    alert("No se puede dividir entre cero");
+  } else {
+    alert("El resultado de la division es: " + (num1 / num2));
+  }
+} else {
+  alert("Operacion no valida");
+}
