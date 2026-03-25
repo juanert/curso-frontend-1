@@ -48,20 +48,18 @@ console.log(multiplicar(2, 3));
 function calculadora() {
   let num1 = Number(prompt("Ingresa el primer numero"));
   let num2 = Number(prompt("Ingresa el segundo numero"));
-  let operacion = prompt("Ingresa la operacion que deseas realizar: suma, resta, multiplicacion o division");
+  let operacion = prompt(
+    "Ingresa la operacion que deseas realizar: suma, resta, multiplicacion o division",
+  );
   if (operacion === "suma") {
     alert(`La suma de ${num1} y ${num2} es: ${num1 + num2}`);
-  }
-  else if (operacion === "resta") {
+  } else if (operacion === "resta") {
     alert(`La resta de ${num1} y ${num2} es: ${num1 - num2}`);
-  }
-  else if (operacion === "multiplicacion") {
+  } else if (operacion === "multiplicacion") {
     alert(`La multiplicacion de ${num1} y ${num2} es: ${num1 * num2}`);
-  }
-  else if (operacion === "division") {
+  } else if (operacion === "division") {
     alert(`La division de ${num1} y ${num2} es: ${num1 / num2}`);
-  }
-  else {
+  } else {
     alert("Operacion no valida");
     alert("Operacion no valida");
   }
@@ -82,16 +80,16 @@ function calculadora() {
 
 let ejemplo = "Soy una variable global";
 
-if(true){
+if (true) {
   let variableLocal = "Soy una variable local";
   var variableGlobal = "Soy una variable global";
   const PI = 3.14; //NUMERO DE EULER
-  if(true){
+  if (true) {
     console.log(variableLocal); // Esto funciona, variableLocal is accessible
   }
 }
 
-if(true){
+if (true) {
   let variableLocal = "Hola";
   var variableGlobal = "Soy una variable global"; // Estoy redeclarando la variable global, lo cual es posible con var, pero no es recomendable
 }
@@ -102,70 +100,70 @@ console.log(PI); // Esto no funciona, PI is not defined
 
 let numero1 = 20;
 
-if(true){
+if (true) {
   let numero2 = numero1;
-  if(false){
+  if (false) {
     let numero3 = numero2;
   }
   numero2 = numero3;
-  console.log(numero3) //undefined
+  console.log(numero3); //undefined
 }
 
-if(true){
-  console.log(numero2) //undefined
+if (true) {
+  console.log(numero2); //undefined
   numero2 = 10;
-  if(true){
-    numero1 = numero2
+  if (true) {
+    numero1 = numero2;
   }
 }
 
-console.log(numero1) //10
+console.log(numero1); //10
 
 //2
 
-if(true){
+if (true) {
   var numero3 = 20;
-  if(true){
+  if (true) {
     let numero4 = 10;
   }
-  numero3 = 15
-  console.log(numero4) //undefined (error)
+  numero3 = 15;
+  console.log(numero4); //undefined (error)
 }
 
-if(true){
-  if(true){
-    if(true){
-      if(true){
-        console.log(numero3) //15
+if (true) {
+  if (true) {
+    if (true) {
+      if (true) {
+        console.log(numero3); //15
       }
     }
-    var numero5 = numero3
+    var numero5 = numero3;
   }
   let numero6 = 2;
 }
 
-numero5 = numero6; //error 
+numero5 = numero6; //error
 
 console.log(numero5);
 
 //3
 
-if(true){
-  if(false){
+if (true) {
+  if (false) {
     var variablex = 30;
-    if(true){
+    if (true) {
       console.log(variblex); //no se ejecuta
     }
   }
 
-  if(true){
+  if (true) {
     var variabley = 12.5;
-    if (12 <= 12){
+    if (12 <= 12) {
       var variablez = variabley;
     } else {
       var variablez = 33.333;
     }
-  } else{
+  } else {
     console.log(variabley); //no se ejecuta
   }
   console.log(variablez); //12.5
@@ -174,22 +172,22 @@ if(true){
 var varaiblew = variablez + variabley; //25
 console.log(variablew); //25
 
-var fantastico = true
+var fantastico = true;
 
-function scope(datoentrada1, datoentrada2){
+function scope(datoentrada1, datoentrada2) {
   var increible = true;
   console.log(fantastico); //MAL
   console.log(datoentrada1, datoentrada2); //CORRECTA
-  if(increible){
-    return increible
+  if (increible) {
+    return increible;
   }
-  console.log("hola")
+  console.log("hola");
 }
 
-console.log(scope())
+console.log(scope());
 
-scope("hola", "mundo")
-scope(fantastico,"oscar")
+scope("hola", "mundo");
+scope(fantastico, "oscar");
 
 /*
   Recursividad
@@ -198,4 +196,58 @@ scope(fantastico,"oscar")
   como el calculo de factoriales o la busqueda de elementos en una estructura de datos.
   Es importante tener una condicion de salida para evitar que la funcion se llame a si misma indefinidamente, 
   lo que causaria un error de stack overflow.
+*/
+
+function contar(contador = 0) {
+  if (contador <= 10) {
+    console.log(
+      `Esta funcion cuenta hasta el 10, voy por el numero ${contador}`,
+    );
+    contar(contador + 1);
+  }
+}
+
+contar();
+
+let frutas = ["tomate", "banana", "fresa", "kiwi"];
+
+function recorrerArray(array, contador = 0) {
+  if (contador < array.length) {
+    console.log(array[contador]);
+    recorrerArray(array, contador + 1);
+  }
+}
+
+recorrerArray(frutas)
+
+let numeros = [2.44, 5, 2, 0, 5, 6];
+
+let compras = [["jamon", "queso"], ["carne", "pollo"], ["tomate", "cebolla"]];
+
+/*
+  Crea un programa que imprima solo los numeros pares del siguiente array
+  [0,3,5,1,2,8,9,10]
+*/
+
+function detectarPar(array, contador = 0){
+  if(contador < array.length){
+    if(array[contador] % 2 == 0){
+      console.log(`${array[contador]} es un numero par`);
+    }
+    detectarPar(array, contador + 1);
+  }
+}
+
+detectarPar([0,3,5,1,2,8,9,10])
+
+/*
+  EJERCICIOS DE RECURSION 
+
+  1) Cuenta desde el ultimo numero de un array hasta el primero
+  [5,2,92,0,3,73,9,6,12]
+
+  2) Suma todos los numeros de un array e imprime cuanto es el total
+  [5,2,92,0,3,73,9,6,12]
+
+  3)Realiza la sucesion de fibonacci hasta un numero N que funcione de limite
 */
