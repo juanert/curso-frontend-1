@@ -218,27 +218,31 @@ function recorrerArray(array, contador = 0) {
   }
 }
 
-recorrerArray(frutas)
+recorrerArray(frutas);
 
 let numeros = [2.44, 5, 2, 0, 5, 6];
 
-let compras = [["jamon", "queso"], ["carne", "pollo"], ["tomate", "cebolla"]];
+let compras = [
+  ["jamon", "queso"],
+  ["carne", "pollo"],
+  ["tomate", "cebolla"],
+];
 
 /*
   Crea un programa que imprima solo los numeros pares del siguiente array
   [0,3,5,1,2,8,9,10]
 */
 
-function detectarPar(array, contador = 0){
-  if(contador < array.length){
-    if(array[contador] % 2 == 0){
+function detectarPar(array, contador = 0) {
+  if (contador < array.length) {
+    if (array[contador] % 2 == 0) {
       console.log(`${array[contador]} es un numero par`);
     }
     detectarPar(array, contador + 1);
   }
 }
 
-detectarPar([0,3,5,1,2,8,9,10])
+detectarPar([0, 3, 5, 1, 2, 8, 9, 10]);
 
 /*
   EJERCICIOS DE RECURSION 
@@ -250,4 +254,127 @@ detectarPar([0,3,5,1,2,8,9,10])
   [5,2,92,0,3,73,9,6,12]
 
   3)Realiza la sucesion de fibonacci hasta un numero N que funcione de limite
+*/
+
+//1)
+
+function invertirArray(array, contador = array.length - 1) {
+  if (contador >= 0 && contador < array.length) {
+    console.log(array[contador]);
+    invertirArray(array, contador - 1);
+  }
+}
+
+invertirArray([5, 2, 92, 0, 3, 73, 9, 6, 12]);
+
+//2)
+function calcularTotalArray(array, contador = 0, total = 0) {
+  if (contador < array.length) {
+    total += array[contador]; // total = total + array[contador]
+    calcularTotalArray(array, contador + 1, total);
+  } else {
+    console.log(`La sumatoria total del array es ${total}`);
+  }
+}
+
+calcularTotalArray([5, 2, 92, 0, 3, 73, 9, 6, 12]);
+
+//3)
+function fibonacci(limite, antiguo = 0, nuevo = 1) {
+  resultado = antiguo + nuevo;
+  if (resultado < limite) {
+    console.log(resultado);
+    fibonacci(limite, nuevo, resultado);
+  }
+}
+
+fibonacci(10);
+
+/*
+  LOOPS (Bucles)
+  Los loops son estructuras de control que permiten repetir un bloque de codigo varias veces,
+  hasta que se cumpla una condicion determinada. En JavaScript, existen varios tipos de loops, 
+  como el for, while y do while.
+*/
+
+//BUCLE FOR
+for (let i = 0; i < 10; i++) {
+  console.log(`El numero actual es: ${i}`);
+}
+
+let frutas2 = ["manzana", "banana", "fresa", "kiwi"];
+for (let i = 0; i < frutas2.length; i++) {
+  console.log(`La fruta en la posicion ${i} es: ${frutas2[i]}`);
+}
+
+//BUCLE WHILE
+let contador = 0;
+while (contador < 10) {
+  console.log(`El numero actual es: ${contador}`);
+  contador++;
+}
+
+//BUCLE DO WHILE
+let contador2 = 0;
+do {
+  console.log(`El numero actual es: ${contador2}`);
+  contador2++;
+} while (contador2 < 10);
+
+//CICLO FOR OF
+let frutas3 = ["manzana", "banana", "fresa", "kiwi"];
+for (let fruta of frutas3) {
+  console.log(`La fruta es: ${fruta}`);
+}
+
+//CICLO FOR IN
+let persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Madrid",
+};
+
+for (let propiedad in persona) {
+  console.log(
+    `La propiedad es: ${propiedad} y su valor es: ${persona[propiedad]}`,
+  );
+}
+
+let compras2 = [["jamon", "queso"], ["carne", "pollo"], 2];
+
+for (elemento of compras2) {
+  if (Array.isArray(elemento)) {
+    for (elemento2 of elemento) {
+      console.log(elemento2);
+    }
+  } else {
+    console.log(elemento);
+  }
+}
+
+/*
+  EJERCICIO DE FOR OF
+  Crea un programa que pueda recorrer el siguiente array
+  [
+    ["manzana", "banana", "fresa"],
+    ["tomate", "cebolla", "lechuga"],
+    ["carne", "pollo", ["pescado", "mariscos"]],
+  ]
+  e imprima cada elemento del array, sin importar el nivel de anidacion.
+*/
+
+/*
+  EJERCICIO DE FOR IN
+  Crea un programa que pueda recorrer el siguiente objeto
+  {
+    nombre: "Juan",
+    edad: 30,
+    direccion: {
+      calle: "Calle Falsa 123",
+      ciudad: "Madrid",
+      pais: "España",
+    },
+    hobbies: ["futbol", "musica", "cine"],
+  }
+  e imprima cada propiedad y su valor, sin importar el nivel de anidacion.
 */
