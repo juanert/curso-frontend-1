@@ -378,3 +378,271 @@ for (elemento of compras2) {
   }
   e imprima cada propiedad y su valor, sin importar el nivel de anidacion.
 */
+
+let ejercicio1 = [
+  ["manzana", "banana", "fresa"],
+  ["tomate", "cebolla", "lechuga"],
+  ["carne", "pollo", ["pescado", "mariscos"]],
+];
+
+//Recorro el array principal (ejercicio1) (Forma menos elegante)
+for (lista of ejercicio1) {
+  //Verifico si el elemento dentro de ejercicio1 es una lista
+  /*
+    lista sera igual a
+    ["manzana", "banana", "fresa"], en primera ejecucion
+    ["tomate", "cebolla", "lechuga"], en segunda ejecucion
+    ["carne", "pollo", ["pescado", "mariscos"]], en tercera ejecucion
+  */
+  if (Array.isArray(lista)) {
+    //Si es una lista, recorro este elemento
+    for (mini_lista of lista) {
+      /*
+        mini_lista sera igual 
+        "manzana" primera ejecucion 
+        "banana" segunda ejecucion
+        "fresa" tercera ejecucion
+        "tomate"  primera ejecucion del segundo ciclo 
+        "cebolla"  segunda ejecucion del segundo ciclo
+        "lechuga" tercera ejecucion del segundo ciclo
+        "carne" primera ejecucion del tercer ciclo
+        "pollo" segunda ejecucion del tercer ciclo
+        ["pescado", "mariscos"] tercera ejecucion del tercer ciclo
+      */
+      //verifico si el elemento es otra lista para recorrerla tambien
+      if (Array.isArray(mini_lista)) {
+        //Recorro esa lista e imprimo elemento
+        for (mini_mini_lista of mini_lista) {
+          /*
+            mini_mini_lista sera igual a
+            "pescado" primera ejecucion
+            "mariscos" segunda ejecucion
+          */
+          console.log(mini_mini_lista);
+        }
+      } else {
+        //Esto se ejecuta en caso de que la mini_lista no sea un array
+        console.log(mini_lista);
+      }
+    }
+  } else {
+    //Esto se ejecuta en caso de que la lista no sea un array
+    console.log(lista);
+  }
+}
+
+console.log("forma mas elegante");
+//(Forma mas elegante) tiene problemas, a solucionar proximamente
+function recorrerArray(array) {
+  let hayMiniArray = false;
+  let miniArray = [];
+  for (elemento of array) {
+    if (Array.isArray(elemento)) {
+      hayMiniArray = true;
+      miniArray = elemento;
+    } else {
+      console.log(elemento);
+    }
+  }
+  if (hayMiniArray) {
+    recorrerArray(miniArray);
+  }
+}
+
+recorrerArray(ejercicio1);
+
+//Ejercicio 2
+let ejercicio2 = {
+  nombre: "Juan",
+  edad: 30,
+  direccion: {
+    calle: "Calle Falsa 123",
+    ciudad: "Madrid",
+    pais: "España",
+  },
+  hobbies: ["futbol", "musica", "cine"],
+};
+
+/*
+  Recorro todas las propiedades del objeto principal, es decir
+  nombre,edad,direccion,hobbies
+*/
+for (propiedad in ejercicio2) {
+  /*
+    Como hobbies es un array, tengo que validar si alguna propiedad contiene un array
+    propiedad contiene el nombre de las propiedades
+    nombre, primera ejecucion
+    edad, segunda ejecucion
+    direccion, tercera ejecucion
+    hobbies, cuarta ejecucion
+
+    al decir ejercicio2[propiedad] llamo al valor de esa propiedad, seria como escribir
+    ejericicio["nombre"], esta linea imprimiria juan, porque devuelve el valor de la propiedad nombre
+  */
+  if (Array.isArray(ejercicio2[propiedad])) {
+    console.log(
+      `la propiedad ${propiedad} es un array, a continuacion recorremos sus elementos`,
+    );
+    /*
+      Como detecto que una propiedad contiene como valor un array tengo que recorrer ese array
+      en este caso ejercicio2["hobbies"] es igual a ["futbol", "musica", "cine"]
+      en la primera ejecucion el ciclo imprime "futbol", luego "musica", luego "cine"
+    */
+    for (elemento of ejercicio2[propiedad]) {
+      console.log(elemento);
+    }
+  } else {
+    /*
+      Como una propiedad contiene otro objeto dentro, entonces debo validar eso.
+      Si el valor de una propiedad es otro objeto, entonces tambien debere de recorrerlo
+      como dato curioso 
+    */
+    if (typeof ejercicio2[propiedad] === "object") {
+      /*
+        Si el if se ejecuta, es que efectivamente. Ese valor es un objeto
+      */
+      console.log(
+        `la propiedad ${propiedad} es un objeto, a continuacion recorremos sus propiedades y valores`,
+      );
+      /*
+        Recorro el objeto, las propiedades de este objeto se guardaran en propiedad2,
+        en este caso propiedad2 contenda:
+        calle en su primera ejecucion
+        ciudad en su segunda ejecucion
+        pais en su tercera ejecucion
+      */
+      for (propiedad2 in ejercicio2[propiedad]) {
+        /*
+          Ahora, como se puede apreciar, parece algo engorroso la linea donde dice
+          ejercicio2[propiedad][propiedad2]
+          Esto en este caso seria igual a decir
+          ejercicio2["direccion"]["calle"] en la primera ejecucion
+          ejercicio2["direccion"]["ciudad"] en la segunda ejecucion
+          ejercicio2["direccion"]["pais"] en la tercera ejecucion
+          puede verse como que entras a la propiedad direccion de ejecicio dos, y luego entras a otra propiedad
+          dentro de direccion
+
+        */
+        console.log(
+          `La propiedad ${propiedad2} tiene como valor ${ejercicio2[propiedad][propiedad2]}`,
+        );
+      }
+    } else {
+      /*
+        En caso de que la propiedad contenga un valor como un string o numero, me ahorro todo el condicional de arriba
+        y simplemente imprimo el valor.
+      */
+      console.log(
+        `La propiedad ${propiedad} tiene como valor ${ejercicio2[propiedad]}`,
+      );
+    }
+  }
+}
+
+/*
+  Recorre el siguiente objeto e imprime cada propiedad y su valor
+  {
+    nombre: "zulia",
+    edad: 25,
+    oyentes_mensuales: 1000000,
+    canciones: [
+      {
+        nombre: "cancion1",
+        duracion: "3:30",
+        album: "album1",
+        artistas: ["artista1", "artista2"],
+      },
+      {
+        nombre: "cancion2",
+        duracion: "4:00",
+        album: "album2",
+        artistas: ["artista3", "artista4"],
+      },
+    ],
+    redes_sociales: {
+      instagram: "https://www.instagram.com/zulia",
+      twitter: "https://www.twitter.com/zulia",
+      facebook: "https://www.facebook.com/zulia",
+    },
+    canciones_favoritas: ["cancion1", "cancion2"],
+  },
+*/
+
+//Metodos de objetos
+/*
+  Los metodos son funciones que estan asociadas a un objeto, y que pueden ser llamadas utilizando la sintaxis de punto.
+  Ocurre que los tipos de datos primitivos como los string, numeros, booleanos, null e undefined no tienen metodos
+  de manera directa, pero JavaScript los convierte en objetos de manera temporal para que puedan utilizar metodos.
+*/
+
+let carro = {
+  marca: "Toyota",
+  modelo: "Corolla",
+  año: 2020,
+  encender: () => {
+    console.log("El carro se ha encendido");
+  },
+  apagar: function () {
+    console.log("El carro se ha apagado");
+  },
+};
+
+carro.encender();
+carro.apagar();
+
+console.log(carro.marca); //Toyota
+
+"hola".length; //4
+"hola".toUpperCase(); //"HOLA"
+
+/*
+  Funciones anonimas
+*/
+
+let funcionalidad = function () {
+  console.log("Esta es una funcion anonima");
+};
+
+funcionalidad();
+
+/*
+  Funciones flecha
+*/
+
+let funcionalidadFlecha = () => {
+  console.log("Esta es una funcion flecha");
+};
+
+funcionalidadFlecha();
+
+
+//Metodos de strings
+let texto = "Hola, bienvenido a la clase de JavaScript JavaScript JavaScript";
+console.log(texto.length); // 39
+console.log(texto.toUpperCase()); // transforma el texto a mayusculas R: "HOLA, BIENVENIDO A LA CLASE DE JAVASCRIPT"
+console.log(texto.toLowerCase()); // transforma el texto a minusculas R: "hola, bienvenido a la clase de javascript"
+console.log(texto.includes("JavaScript")); // verifica si el texto contiene la palabra "JavaScript" R: true
+console.log(texto.startsWith("Hola")); // verifica si el texto comienza con la palabra "Hola" R: true
+console.log(texto.endsWith("JavaScript")); // verifica si el texto termina con la palabra "JavaScript" R: true
+console.log(texto.indexOf("clase")); // devuelve la posicion de la primera ocurrencia de la palabra "clase" R: 22
+console.log(texto.lastIndexOf("clase")); // devuelve la posicion de la ultima ocurrencia de la palabra "clase" R: 22
+console.log(texto.replace("JavaScript", "JS")); // reemplaza la palabra "JavaScript" por "JS" R: "Hola, bienvenido a la clase de JS"
+console.log(texto.replaceAll("JavaScript", "JS")); // reemplaza todas las ocurrencias de la palabra "JavaScript" por "JS" R: "Hola, bienvenido a la clase de JS JS JS"
+console.log(texto.split(" ")); // divide el texto en un array de palabras R: ["Hola,", "bienvenido", "a", "la", "clase", "de", "JavaScript", "JavaScript", "JavaScript"]
+console.log(texto.trim()); // elimina los espacios en blanco al inicio y al final del texto R: "Hola, bienvenido a la clase de JavaScript"
+console.log(texto.charAt(0)); // devuelve el caracter en la posicion 0 R: "H"
+console.log(texto.charCodeAt(0)); // devuelve el codigo ASCII del caracter en la posicion 0 R: 72 
+console.log(texto.concat(" Espero que disfrutes la clase")); // concatena el texto con otro texto R: "Hola, bienvenido a la clase de JavaScript Espero que disfrutes la clase"
+console.log(texto.repeat(2)); // repite el texto 2 veces R: "Hola, bienvenido a la clase de JavaScriptHola, bienvenido a la clase de JavaScript"
+console.log(texto.slice(0, 5)); // devuelve una parte del texto desde la posicion 0 hasta la posicion 5 R: "Hola,"
+console.log(texto.substring(0, 5)); // devuelve una parte del texto desde la posicion 0 hasta la posicion 5 R: "Hola,"
+
+/*
+  Crea un ejercicio que analice un string y verifique si contiene malas palabras que podemos conseguir en el siguiente
+  array de malas palabaras
+  ["recorcholis","rayos","centellas","chispitas"]
+  si hay malas, cambialas por "****"
+*/
+
+let malasPalabras = ["recorcholis","rayos","centellas","chispitas"];
+let evaluarTexto = "Rayos viejo, la noche de anoche fue salvaje, chispitas y centellas volaron por todas partes, recorcholis, eso fue tripiante";
