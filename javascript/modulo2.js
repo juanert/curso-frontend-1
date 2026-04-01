@@ -646,3 +646,64 @@ console.log(texto.substring(0, 5)); // devuelve una parte del texto desde la pos
 
 let malasPalabras = ["recorcholis","rayos","centellas","chispitas"];
 let evaluarTexto = "Rayos viejo, la noche de anoche fue salvaje, chispitas y centellas volaron por todas partes, recorcholis, eso fue tripiante";
+
+for(let malaPalabara of malasPalabras){
+  evaluarTexto = evaluarTexto.toLowerCase().replaceAll(malaPalabara, "*".repeat(malaPalabara.length))
+}
+
+console.log(evaluarTexto);
+
+/*
+  Metodos de arrays
+*/
+
+let lista = ["pan", "leche", "huevos", "azucar"];
+console.log(lista.length); // 4
+console.log(lista.push("harina")); // agrega un elemento al final del array R: 5
+console.log(lista.pop()); // elimina el ultimo elemento del array R: "harina"
+console.log(lista.unshift("mantequilla")); // agrega un elemento al inicio del array R: 5
+console.log(lista.shift()); // elimina el primer elemento del array R: "mantequilla"
+console.log(lista.indexOf("huevos")); // devuelve la posicion de la primera ocurrencia del elemento "huevos" R: 2
+console.log(lista.lastIndexOf("huevos")); // devuelve la posicion de la ultima ocurrencia del elemento "huevos" R: 2
+console.log(lista.includes("leche")); // verifica si el array contiene el elemento "leche" R: true
+console.log(lista.join(", ")); // une los elementos del array en un string separados por ", " R: "pan, leche, huevos, azucar"
+console.log(lista.reverse()); // invierte el orden de los elementos del array R: ["azucar", "huevos", "leche", "pan"]
+console.log(lista.sort()); // ordena los elementos del array en orden alfabetico R: ["azucar", "huevos", "leche", "pan"]
+console.log(lista.slice(1, 3)); // devuelve una parte del array desde la posicion 1 hasta la posicion 3 R: ["huevos", "leche"]
+console.log(lista.splice(1, 2)); // elimina elementos del array desde la posicion 1, eliminando 2 elementos R: ["huevos", "leche"]
+console.log(lista); // ["pan", "azucar"]
+console.log(lista.concat(["mantequilla", "harina"])); // concatena el array con otro array R: ["pan", "azucar", "mantequilla", "harina"]
+console.log(lista)
+console.log(lista.filter(elemento => elemento.length > 4)); // devuelve un nuevo array con los elementos que cumplen la condicion R: ["azucar"]
+console.log(lista.map(elemento => elemento.toUpperCase())); // devuelve un nuevo array con los resultados de aplicar la funcion a cada elemento R: ["PAN", "AZUCAR"]
+console.log(lista.reduce((acumulador, elemento) => acumulador + " " + elemento)); // devuelve un unico valor que es el resultado de aplicar la funcion a un acumulador y cada elemento del array R: "pan azucar"  
+
+
+function imprimir_mensaje(mensaje = "") {
+  console.log(mensaje);
+}
+
+function login(usuario, contraseña, funcionalidad) {
+  if (usuario === "admin" && contraseña === "1234") {
+    funcionalidad("Login exitoso");
+  } else {
+    funcionalidad("Login fallido");
+  }
+}
+
+login("admin", "1234", imprimir_mensaje);
+
+/*
+  PROYECTO DE LA SECCION 2 1RA PARTE
+  Realiza una funcionalidad que funcione como el juego de Piedra, Papel o Tijera, 
+  el usuario debe ingresar su eleccion, luego la computadora hara una eleccion aleatoria (investigar como generar un numero aleatorio en JavaScript),
+  y se mostrara el resultado de quien gano.
+
+  Realiza una funcionalidad que permita al usuario ingresar un texto, y te muestre el numero de vocales, letras, palabras que tiene ese texto.
+
+  Realiza una funcionalidad que verifique si un string es un palindromo, 
+  es decir, que se lee igual de izquierda a derecha que de derecha a izquierda,
+  por ejemplo "oso" es un palindromo, mientras que "hola" no lo es.
+
+  Fecha de entrega: 03/04/26
+*/
