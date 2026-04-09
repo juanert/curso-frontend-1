@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="juego()">Jugar</button>
+    <script>
+      function juego() {
+        let opciones = ["piedra", "papel", "tijera"];
+        let jugadaUsuario = prompt("Ingresa piedra, papel o tijera")
+          .toLowerCase()
+          .trim();
+        let jugadaComputadora = opciones[Math.floor(Math.random() * 3)];
+
+        if (!opciones.includes(jugadaUsuario)) {
+          alert("Jugada no válida. Intenta de nuevo.");
+          return;
+        }
+        
+        if (jugadaUsuario === jugadaComputadora) {
+          alert("Empate");
+        } else if (
+          (jugadaUsuario === "piedra" && jugadaComputadora === "tijera") ||
+          (jugadaUsuario === "papel" && jugadaComputadora === "piedra") ||
+          (jugadaUsuario === "tijera" && jugadaComputadora === "papel")
+        ) {
+          alert(`Ganaste, la computadora jugo ${jugadaComputadora}`);
+        } else {
+          alert(`Perdiste, la computadora jugo ${jugadaComputadora}`);
+        }
+      }
+    </script>
+  </body>
+</html>

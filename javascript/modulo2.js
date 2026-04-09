@@ -615,7 +615,6 @@ let funcionalidadFlecha = () => {
 
 funcionalidadFlecha();
 
-
 //Metodos de strings
 let texto = "Hola, bienvenido a la clase de JavaScript JavaScript JavaScript";
 console.log(texto.length); // 39
@@ -631,7 +630,7 @@ console.log(texto.replaceAll("JavaScript", "JS")); // reemplaza todas las ocurre
 console.log(texto.split(" ")); // divide el texto en un array de palabras R: ["Hola,", "bienvenido", "a", "la", "clase", "de", "JavaScript", "JavaScript", "JavaScript"]
 console.log(texto.trim()); // elimina los espacios en blanco al inicio y al final del texto R: "Hola, bienvenido a la clase de JavaScript"
 console.log(texto.charAt(0)); // devuelve el caracter en la posicion 0 R: "H"
-console.log(texto.charCodeAt(0)); // devuelve el codigo ASCII del caracter en la posicion 0 R: 72 
+console.log(texto.charCodeAt(0)); // devuelve el codigo ASCII del caracter en la posicion 0 R: 72
 console.log(texto.concat(" Espero que disfrutes la clase")); // concatena el texto con otro texto R: "Hola, bienvenido a la clase de JavaScript Espero que disfrutes la clase"
 console.log(texto.repeat(2)); // repite el texto 2 veces R: "Hola, bienvenido a la clase de JavaScriptHola, bienvenido a la clase de JavaScript"
 console.log(texto.slice(0, 5)); // devuelve una parte del texto desde la posicion 0 hasta la posicion 5 R: "Hola,"
@@ -644,11 +643,14 @@ console.log(texto.substring(0, 5)); // devuelve una parte del texto desde la pos
   si hay malas, cambialas por "****"
 */
 
-let malasPalabras = ["recorcholis","rayos","centellas","chispitas"];
-let evaluarTexto = "Rayos viejo, la noche de anoche fue salvaje, chispitas y centellas volaron por todas partes, recorcholis, eso fue tripiante";
+let malasPalabras = ["recorcholis", "rayos", "centellas", "chispitas"];
+let evaluarTexto =
+  "Rayos viejo, la noche de anoche fue salvaje, chispitas y centellas volaron por todas partes, recorcholis, eso fue tripiante";
 
-for(let malaPalabara of malasPalabras){
-  evaluarTexto = evaluarTexto.toLowerCase().replaceAll(malaPalabara, "*".repeat(malaPalabara.length))
+for (let malaPalabara of malasPalabras) {
+  evaluarTexto = evaluarTexto
+    .toLowerCase()
+    .replaceAll(malaPalabara, "*".repeat(malaPalabara.length));
 }
 
 console.log(evaluarTexto);
@@ -673,11 +675,12 @@ console.log(lista.slice(1, 3)); // devuelve una parte del array desde la posicio
 console.log(lista.splice(1, 2)); // elimina elementos del array desde la posicion 1, eliminando 2 elementos R: ["huevos", "leche"]
 console.log(lista); // ["pan", "azucar"]
 console.log(lista.concat(["mantequilla", "harina"])); // concatena el array con otro array R: ["pan", "azucar", "mantequilla", "harina"]
-console.log(lista)
-console.log(lista.filter(elemento => elemento.length > 4)); // devuelve un nuevo array con los elementos que cumplen la condicion R: ["azucar"]
-console.log(lista.map(elemento => elemento.toUpperCase())); // devuelve un nuevo array con los resultados de aplicar la funcion a cada elemento R: ["PAN", "AZUCAR"]
-console.log(lista.reduce((acumulador, elemento) => acumulador + " " + elemento)); // devuelve un unico valor que es el resultado de aplicar la funcion a un acumulador y cada elemento del array R: "pan azucar"  
-
+console.log(lista);
+console.log(lista.filter((elemento) => elemento.length > 4)); // devuelve un nuevo array con los elementos que cumplen la condicion R: ["azucar"]
+console.log(lista.map((elemento) => elemento.toUpperCase())); // devuelve un nuevo array con los resultados de aplicar la funcion a cada elemento R: ["PAN", "AZUCAR"]
+console.log(
+  lista.reduce((acumulador, elemento) => acumulador + " " + elemento),
+); // devuelve un unico valor que es el resultado de aplicar la funcion a un acumulador y cada elemento del array R: "pan azucar"
 
 function imprimir_mensaje(mensaje = "") {
   console.log(mensaje);
@@ -707,3 +710,194 @@ login("admin", "1234", imprimir_mensaje);
 
   Fecha de entrega: 03/04/26
 */
+
+function juego() {
+  let opciones = ["piedra", "papel", "tijera"];
+  let jugadaUsuario = prompt("Ingresa piedra pepel tijera").toLowerCase();
+  let jugadaComputadora = opciones[Math.floor(Math.random() * 3)];
+
+  if (jugadaUsuario === jugadaComputadora) {
+    alert("Empate");
+  } else if (
+    (jugadaUsuario === "piedra" && jugadaComputadora === "tijera") ||
+    (jugadaUsuario === "papel" && jugadaComputadora === "piedra") ||
+    (jugadaUsuario === "tijera" && jugadaComputadora === "papel")
+  ) {
+    alert(`Ganaste, la computadora jugo ${jugadaComputadora}`);
+  } else {
+    alert(`Perdiste, la computadora jugo ${jugadaComputadora}`);
+  }
+}
+
+/*
+  Programacion orientada a objetos (POO)
+  La programacion orientada a objetos es un paradigma de programacion que se basa en la creacion de objetos que 
+  contienen propiedades y metodos.
+*/
+
+/*
+  Las clases son moldes o plantillas para crear objetos, las clases definen las propiedades y 
+  metodos que tendran los objetos creados a partir de esa clase.
+*/
+
+class Personaje {
+  constructor(nombre, raza, clase) {
+    this.nombre = nombre;
+    this.raza = raza;
+    this.clase = clase;
+  }
+
+  saludar() {
+    console.log(
+      `Hola, mi nombre es ${this.nombre}, soy de la raza ${this.raza} y mi clase es ${this.clase}`,
+    );
+  }
+}
+
+let personaje1 = new Personaje("Aragorn", "Humano", "Guerrero");
+let personaje2 = new Personaje("Legolas", "Elfo", "Arquero");
+let personaje3 = new Personaje("Gimli", "Enano", "Guerrero");
+
+personaje1.saludar();
+personaje2.saludar();
+personaje3.saludar();
+
+/*
+  Crea una clase llamada ejercicios donde contenga los metodos para ejecutar los ejercicios de la seccion 2,
+  esta clase no necesita tener el metodo constructor, simplemente es una clase que agrupa los ejercicios para 
+  tener un codigo mas organizado.
+*/
+
+class SerVivo{
+  constructor(nombre, tipo){
+    this.nombre = nombre;
+    this.tipo = tipo;
+  }
+
+  describir() {
+    console.log(`Soy un ${this.tipo} llamado ${this.nombre}`);
+  }
+}
+
+class Gato extends SerVivo{
+  constructor(nombre, tipo, raza){
+    super(nombre, tipo);
+    this.raza = raza;
+  }
+
+  maullar() {
+    console.log("Miau");
+    console.log(`Mi raza es ${this.raza}`);
+  }
+}
+
+let gato1 = new Gato("Michi", "Gato", "Siames");
+gato1.describir();
+gato1.maullar();
+
+/*-----------------------------------------------------------*/
+
+class heroe {
+  constructor(nombre, ataque, defensa, vida, velocidad) {
+    this.nombre = nombre;
+    this.ataque = ataque;
+    this.defensa = defensa;
+    this.vida = vida;
+    this.velocidad = velocidad;
+  }
+
+  atacar(objetivo) {
+    // Se muestra un mensaje de que el heroe ataca al objetivo
+    console.log(`${this.nombre} ataca a ${objetivo.nombre} con ${this.ataque} pts de ataque`);
+    // El daño se calcula restando la defensa del objetivo al ataque del heroe, pero el daño no puede ser negativo
+    let danio = this.ataque - objetivo.defensa > 0 ? this.ataque - objetivo.defensa : 0;
+    /*
+      Operador ternario: es una forma de escribir un condicional de manera mas compacta, se compone de tres partes:
+      condicion ? valor_si_verdadero : valor_si_falso
+      ejemplo 
+      20 > 10 ? "20 es mayor que 10" : "20 no es mayor que 10"
+      En este caso, la condicion es this.ataque - objetivo.defensa > 0, si esta condicion es verdadera, entonces danio sera igual a 
+      this.ataque - objetivo.defensa, pero si la condicion es falsa, entonces danio sera igual a 0, esto se hace para evitar que el 
+      daño sea negativo, ya que si el ataque del heroe es menor que la defensa del objetivo, el daño no puede ser negativo, sino que 
+      simplemente no se hace daño.
+    */
+    // El daño se resta a la vida del objetivo
+    objetivo.vida -= danio; // objetivo.vida = objetivo.vida - danio
+    // Se muestra un mensaje con el resultado del ataque
+    console.log(`${objetivo.nombre} recibe ${danio} de daño, su vida ahora es ${objetivo.vida}`);
+    if (objetivo.vida <= 0) {
+      console.log(`${objetivo.nombre} ha sido derrotado por ${this.nombre}`);
+    }
+  }
+}
+
+class Mago extends heroe {
+  constructor(nombre, ataque, defensa, vida, velocidad, mana) {
+    super(nombre, ataque, defensa, vida, velocidad);
+    this.mana = mana;
+  }
+
+  lanzarHechizo(objetivo) {
+    // El hechizo consume 10 puntos de mana y hace un ataque con un multiplicador de 1.5, pero solo si el mago tiene suficiente mana
+    if (this.mana >= 10) {
+      // Se muestra un mensaje de que el mago lanza un hechizo al objetivo
+      console.log(`${this.nombre} lanza un hechizo a ${objetivo.nombre} con ${this.ataque * 1.5} pts de ataque`);
+      // El daño se calcula restando la defensa del objetivo al ataque del mago multiplicado por 1.5, pero el daño no puede ser negativo
+      let danio = this.ataque * 1.5 - objetivo.defensa > 0 ? this.ataque * 1.5 - objetivo.defensa : 0;
+      // El daño se resta a la vida del objetivo
+      objetivo.vida -= danio;
+      // El mago consume 10 puntos de mana
+      this.mana -= 10;
+      // Se muestra un mensaje con el resultado del hechizo y el mana restante del mago
+      console.log(`${objetivo.nombre} recibe ${danio} de daño, su vida ahora es ${objetivo.vida}`);
+      console.log(`${this.nombre} tiene ${this.mana} de mana restante`);
+      if(objetivo.vida <= 0) {
+        console.log(`${objetivo.nombre} ha sido derrotado por ${this.nombre}`);
+      }
+    } else {
+      // Si el mago no tiene suficiente mana, se muestra un mensaje indicando que no puede lanzar el hechizo
+      console.log(`${this.nombre} no tiene suficiente mana para lanzar un hechizo`);
+    }
+  }
+}
+
+class Guerrero extends heroe {
+  constructor(nombre, ataque, defensa, vida, velocidad, vigor) {
+    super(nombre, ataque, defensa, vida, velocidad);
+    this.vigor = vigor;
+  }
+
+  ataqueFuerte(objetivo) {
+    // El ataque fuerte consume 5 puntos de vigor y hace un ataque con un multiplicador de 2, pero solo si el guerrero tiene suficiente vigor
+    if (this.vigor >= 5) {
+      // Se muestra un mensaje de que el guerrero realiza un ataque fuerte al objetivo
+      console.log(`${this.nombre} realiza un ataque fuerte a ${objetivo.nombre} con ${this.ataque * 2} pts de ataque`);
+      // El daño se calcula restando la defensa del objetivo al ataque del guerrero multiplicado por 2, pero el daño no puede ser negativo
+      let danio = this.ataque * 2 - objetivo.defensa > 0 ? this.ataque * 2 - objetivo.defensa : 0;
+      // El daño se resta a la vida del objetivo
+      objetivo.vida -= danio;
+      // El guerrero consume 5 puntos de vigor
+      this.vigor -= 5;
+      // Se muestra un mensaje con el resultado del ataque fuerte y el vigor restante del guerrero
+      console.log(`${objetivo.nombre} recibe ${danio} de daño, su vida ahora es ${objetivo.vida}`);
+      console.log(`${this.nombre} tiene ${this.vigor} de vigor restante`);
+      if(objetivo.vida <= 0) {
+        console.log(`${objetivo.nombre} ha sido derrotado por ${this.nombre}`);
+      }
+    } else {
+      console.log(`${this.nombre} no tiene suficiente vigor para realizar un ataque fuerte`);
+    }
+  }
+}
+
+// Creamos dos personajes, un mago y un guerrero, con sus respectivas propiedades
+let gandalf = new Mago("Gandalf", 40, 10, 100, 20, 50);
+let aragorn = new Guerrero("Aragorn", 25, 15, 120, 15, 10);
+
+// Simulamos un combate entre Gandalf y Aragorn
+do{
+  gandalf.lanzarHechizo(aragorn);
+  aragorn.ataqueFuerte(gandalf);
+} while (gandalf.vida > 0 && aragorn.vida > 0);
+
+
