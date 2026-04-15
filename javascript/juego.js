@@ -55,7 +55,8 @@ class Mago extends Personaje {
   }
 
   ataque_especial(objetivo) {
-    let hechizo = this.hechizos[Math.floor(Math.random() * this.hechizos.length)];
+    let hechizo =
+      this.hechizos[Math.floor(Math.random() * this.hechizos.length)];
     let danio = Math.floor(Math.random() * hechizo.danio + 1);
     let defensa_objetivo = Math.floor(Math.random() * objetivo.defensa + 1);
     let danioTotal =
@@ -100,42 +101,47 @@ class Arquero extends Personaje {
   }
 }
 
-class Juego{
-  constructor(personajes){
+class Juego {
+  constructor(personajes) {
     this.personajes = personajes;
   }
 
-  iniciar(){
-    for(let personaje of this.personajes){
+  iniciar() {
+    for (let personaje of this.personajes) {
       personaje.saludar();
     }
-    do{
+    do {
+      this.personajes_vivos();
       //Generar una velocidad para personaje
       this.generar_velocidad();
       this.organizar_ronda();
-      for(let i = 0; i < this.personajes.length; i++){
+      for (let i = 0; i < this.personajes.length; i++) {
         let atacarA = this.numero_aleatorio(this.personajes.length);
-        do{
+        do {
           atacarA = this.numero_aleatorio(this.personajes.length);
-        } while (atacarA === i)
-        if( this.numero_aleatorio(3) === 0){
+        } while (atacarA === i);
+        if (this.numero_aleatorio(3) === 0) {
           //Si sale 0, el personaje ataca con los puños, hay 1/3 de probabilidades de que esto pase
           this.personajes[i].atacar(this.personajes[atacarA]);
-        } else{
+        } else {
           this.personajes[i].ataque_especial(this.personajes[atacarA]);
         }
+        this.personajes_vivos();
       }
-    } while(this.personajes.length > 1)
-    console.log(`El juego ha terminado, el ganador es ${this.personajes[0].nombre}`)
-    
+    } while (this.personajes.length > 1);
+    console.log(
+      `El juego ha terminado, el ganador es ${this.personajes[0].nombre}`,
+    );
   }
 
-  personajes_vivos(){
-    let personajes_vivos = this.personajes.filter(personaje => personaje.vida > 0);
+  personajes_vivos() {
+    let personajes_vivos = this.personajes.filter(
+      (personaje) => personaje.vida > 0,
+    );
     this.personajes = personajes_vivos;
   }
 
-  generar_velocidad(){
+  generar_velocidad() {
     /*
       Los tres puntos se denominan spread operator
       Lo que hace es crear una copia de un objeto o array,  imaginate que personaje es igual a 
@@ -153,26 +159,48 @@ class Juego{
 
       La funcion map me creara automaticamente un nuevo array con este nuevos objetos.
     */
-    return this.personajes.map((personaje) => { return {...personaje, velocidad_ronda: Math.floor(Math.random * personaje.velocidad + 1)} });
+    this.personajes = this.personajes.map((personaje) => {
+      return {
+        ...personaje,
+        velocidad_ronda: Math.floor(Math.random() * personaje.velocidad + 1),
+      };
+    });
   }
 
-  organizar_ronda(){
-    let orden_ronda = this.personajes.sort((elemento1,elemento2) => elemento1.velocidad_ronda - elemento2.velocidad_ronda);
+  organizar_ronda() {
+    let orden_ronda = this.personajes.sort(
+      (elemento1, elemento2) =>
+        elemento1.velocidad_ronda - elemento2.velocidad_ronda,
+    );
     this.personajes = orden_ronda;
   }
 
-  numero_aleatorio(multiplicador, min = 0){
-    return Math.floor((Math.random() * multiplicador) + min)
+  numero_aleatorio(multiplicador, min = 0) {
+    return Math.floor(Math.random() * multiplicador + min);
   }
-
 }
 
 //Crea dos guerreros, dos magos y un arquero
-let guerrero1 = new Guerrero("Mario", 100, 20, 10, 5, [{nombre: "Espada", danio: 30}, {nombre: "Hacha", danio: 25}]);
-let guerrero2 = new Guerrero("Luigi", 100, 20, 10, 5, [{nombre: "Espada", danio: 30}, {nombre: "Hacha", danio: 25}]);
-let mago1 = new Mago("Peach", 80, 15, 5, 7, [{nombre: "Bola de fuego", danio: 25}, {nombre: "Rayo", danio: 20}]);
-let mago2 = new Mago("Daisy", 80, 15, 5, 7, [{nombre: "Bola de fuego", danio: 25}, {nombre: "Rayo", danio: 20}]);
-let arquero1 = new Arquero("Yoshi", 90, 18, 8, 6, [{nombre: "Flecha de fuego", danio: 28}, {nombre: "Flecha de hielo", danio: 22}]);
+let guerrero1 = new Guerrero("Mario", 100, 20, 10, 5, [
+  { nombre: "Espada", danio: 30 },
+  { nombre: "Hacha", danio: 25 },
+]);
+let guerrero2 = new Guerrero("Luigi", 100, 20, 10, 5, [
+  { nombre: "Espada", danio: 30 },
+  { nombre: "Hacha", danio: 25 },
+]);
+let mago1 = new Mago("Peach", 80, 15, 5, 7, [
+  { nombre: "Bola de fuego", danio: 25 },
+  { nombre: "Rayo", danio: 20 },
+]);
+let mago2 = new Mago("Daisy", 80, 15, 5, 7, [
+  { nombre: "Bola de fuego", danio: 25 },
+  { nombre: "Rayo", danio: 20 },
+]);
+let arquero1 = new Arquero("Yoshi", 90, 18, 8, 6, [
+  { nombre: "Flecha de fuego", danio: 28 },
+  { nombre: "Flecha de hielo", danio: 22 },
+]);
 
 //Crea un juego con los personajes creados
 let juego = new Juego([guerrero1, guerrero2, mago1, mago2, arquero1]);

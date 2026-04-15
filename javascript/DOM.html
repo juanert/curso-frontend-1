@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Estilos para el modo oscuro */
+      .dark-mode {
+        background-color: #333; /* Color de fondo oscuro */
+        color: #fff; /* Color de texto claro */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button id="boton">Click me</button>
+    </div>
+    <script>
+      //Seleccionar el botón por su ID
+      const boton = document.getElementById("boton");
+      boton.style.backgroundColor = "blue"; // Cambiar el color de fondo del botón a azul
+      boton.style.color = "white"; // Cambiar el color del texto del botón a blanco
+      console.log(boton); // Imprimir el elemento del botón en la consola
+      console.log(boton.innerText); // Imprimir el texto del botón en la consola
+      //Una vez seleccionado el botón, podemos agregar un evento de click
+      // Crear modo claro y modo oscuro
+      boton.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode"); // Alternar la clase "dark-mode" en el cuerpo del documento
+        //trasición suave para el cambio de modo
+        document.body.style.transition = "background-color 0.5s, color 0.5s"; // Agregar una transición suave para el cambio de fondo y color
+      });
+      /*
+        Propiedades y metodos comunes del DOM:
+        - document.getElementById(): Selecciona un elemento por su ID.
+        - document.querySelector(): Selecciona el primer elemento que coincide con un selector CSS. ejemplo: document.querySelector(".clase") o document.querySelector("#id")
+        - document.querySelectorAll(): Selecciona todos los elementos que coinciden con un selector CSS y devuelve una NodeList.
+        - element.innerText: Obtiene o establece el texto dentro de un elemento.
+        - element.style: Permite acceder y modificar los estilos CSS de un elemento.
+        - element.addEventListener(): Agrega un evento a un elemento, como un click o un cambio de estado.
+        - document.body: Hace referencia al elemento <body> del documento.
+        - document.createElement(): Crea un nuevo elemento HTML.
+        - element.appendChild(): Agrega un elemento hijo a un elemento existente.
+        - element.removeChild(): Elimina un elemento hijo de un elemento existente.
+        - element.classList: Permite acceder y modificar las clases CSS de un elemento.
+        - element.classList.add(): Agrega una clase CSS a un elemento.
+        - element.classList.remove(): Elimina una clase CSS de un elemento.
+        - element.classList.toggle(): Alterna una clase CSS en un elemento.
+        - element.value: Obtiene o establece el valor de un elemento de formulario, como un input o textarea.
+      */
+    </script>
+  </body>
+</html>
