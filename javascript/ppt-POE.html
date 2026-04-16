@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-blue-600 text-white">
+    <div class="p-8 flex flex-col justify-center gap-4">
+      <p id="resultado" class="text-4xl font-semibold text-center">Selecciona una opción</p>
+      <p id="contador" class="text-2xl font-semibold text-center"></p>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="flex flex-col gap-4">
+          <p id="jugador" class="text-6xl font-bold text-center">Opcion jugador</p>
+          <div class="flex gap-4 justify-center items-center">
+            <button
+              id="piedra"
+              class="rounded-2xl px-4 py-2 text-2xl bg-white text-black hover:transition-transform hover:scale-110 cursor-pointer"
+            >
+              ✊
+            </button>
+            <button
+              id="papel"
+              class="rounded-2xl px-4 py-2 text-2xl bg-white text-black hover:transition-transform hover:scale-110 cursor-pointer"
+            >
+              ✋
+            </button>
+            <button
+              id="tijera"
+              class="rounded-2xl px-4 py-2 text-2xl bg-white text-black hover:transition-transform hover:scale-110 cursor-pointer"
+            >
+              ✌️
+            </button>
+          </div>
+        </div>
+        <div class="flex justify-center items-center">
+          <p id="computadora" class="text-6xl font-bold text-center">Opcion PC</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Selecciono todos los botones y los recorro
+      let contadorJugador = 0;
+      let contadorComputadora = 0;
+      function juego(boton) {
+        // Posibles opciones para el juego
+          let opciones = ["✊", "✋", "✌️"];
+          // Obtengo la jugada del usuario a partir del texto del botón
+          let jugadaUsuario = boton.innerText;
+          // Genero una jugada aleatoria para la computadora
+          let jugadaComputadora = opciones[Math.floor(Math.random() * 3)];
+          // Actualizo lo que jugo el usuario
+          document.getElementById("jugador").innerText = jugadaUsuario;
+          // Actualizo lo que jugo la computadora
+          document.getElementById("computadora").innerText = jugadaComputadora;
+          // Determino el resultado del juego y lo muestro en el elemento con id "resultado"
+          if (jugadaUsuario === jugadaComputadora) {
+            document.getElementById("resultado").innerText = "Empate";
+            document.getElementById("contador").innerText = `Jugador: ${contadorJugador} - Computadora: ${contadorComputadora}`;
+          } else if (
+            (jugadaUsuario === "✊" && jugadaComputadora === "✌️") ||
+            (jugadaUsuario === "✋" && jugadaComputadora === "✊") ||
+            (jugadaUsuario === "✌️" && jugadaComputadora === "✋")
+          ) {
+            document.getElementById("resultado").innerText = "Ganaste";
+            document.getElementById("contador").innerText = `Jugador: ${++contadorJugador} - Computadora: ${contadorComputadora}`;
+          } else {
+            document.getElementById("resultado").innerText = "Perdiste";
+            document.getElementById("contador").innerText = `Jugador: ${contadorJugador} - Computadora: ${++contadorComputadora}`;
+          }
+      }
+      document.querySelectorAll("button").forEach((boton) => {
+        // Agrego un evento de click a cada botón
+        boton.addEventListener("click", () => {
+          juego(boton);
+        });
+      });
+    </script>
+  </body>
+</html>
