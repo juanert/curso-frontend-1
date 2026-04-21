@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-blue-500 text-white flex flex-col gap-4 items-center p-8">
+    <div class="flex gap-4 items-center">
+      <input
+        id="inputTarea"
+        type="text"
+        placeholder="Escribe una tarea"
+        class="rounded-lg px-4 py-2 text-black text-xl w-full max-w-md"
+      />
+      <button
+        id="btnAgregar"
+        class="rounded-lg px-4 py-2 text-xl bg-white text-black hover:transition-transform hover:scale-110 cursor-pointer"
+      >
+        Agregar tarea
+      </button>
+    </div>
+    <div
+      id="listaTareas"
+      class="w-full max-w-md flex flex-col gap-2 p-4 bg-white text-black rounded-lg"
+    >
+      <!-- Las tareas se agregarán aquí -->
+    </div>
+  </body>
+  <script>
+    //Incializo variables inciales
+    //Lista de tareas (es un array que contendra objetos)
+    let tareas = [];
+    //El input de tareas
+    let tarea = document.getElementById("inputTarea");
+    //EL boton que acompaña al input
+    let boton = document.getElementById("btnAgregar");
+    //div que contendra la tareas
+    let listaTareas = document.getElementById("listaTareas");
+
+    //Funcion que sirve para pasar un elemento de completado a no completdo o viceversa
+    function actualizarTarea(posicion) {
+      //Verifico que la posicion sea algo valida
+      if ((posicion) => 0) {
+        //Selecciono la posicion del array de tareas, selecciono su propiedad completada
+        // y la invierto, si era true, pasa a false y viceversa
+        tareas[posicion].completada = !tareas[posicion].completada;
+        //luego de actualizar tengo que dibujar el array en html de nuevo
+        actualizarLista();
+      } else {
+        //Esto en caso de que la posicion sea algo no valido
+        console.log("No se encontro el elemento en la lista de tareas");
+      }
+    }
+
+    function eliminarTarea(posicion) {
+      if ((posicion) => 0) {
+        tareas = tareas.splice(1, posicion);
+        console.log(tareas);
+        actualizarLista();
+      } else {
+        console.log("No se encontro el elemento en la lista de tareas");
+      }
+    }
+
+    //Funcion que me permitira actualizar el HTML con la lista de tareas
+    function actualizarLista() {
+      //Vacio la lista de tareas en el HTML
+      listaTareas.innerHTML = "";
+      //Por cada tarea ejecutare el siguiente codigo
+      tareas.forEach((elemento, posicion) => {
+        //Creo un parrafo
+        let parrafo = document.createElement("p");
+        //dentro de ese parrafo agrego contenido como el nombre de la tarea
+        //le agrego un boton que mostrara si esta completada o no la tarea}
+        //ademas el boton llama a la function actualizarTarea
+        parrafo.innerHTML = `${elemento.tarea} <button onclick="actualizarTarea(${posicion})">${elemento.completada ? "✅" : "❌"}<button> <button onclick="eliminarTarea(${posicion})">🗑️</button>`;
+        //Agrego el parrafo al html (listaTareas)
+        listaTareas.appendChild(parrafo);
+      });
+    }
+
+    //Verifico si se hizo click en el boton de agregar una tarea
+    boton.addEventListener("click", (evento) => {
+      //Leo lo que el usuario escribio en el input
+      let tarea_valor = document.getElementById("inputTarea").value;
+      //Creo un objeto con la propiedad tarea, que contiene lo que el usuario escribio
+      //y una propiedad completada, que puede ser false o true
+      let tarea_objeto = {
+        tarea: tarea_valor,
+        completada: false,
+      };
+      //agrego la tarea a la lista de tareas
+      tareas.push(tarea_objeto);
+      //vuelvo a actualizar el HTML con la nueva lista de tareas
+      actualizarLista();
+    });
+  </script>
+</html>
