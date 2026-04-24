@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="personajes"></div>
+    <script>
+      let url = "https://dattebayo-api.onrender.com/characters";
+      async function mostrarPersonajes() {
+        let personajes = null;
+        personajes = await fetch(url).then((datos) => {
+          let personajes_json = datos.json();
+          return personajes_json;
+        });
+        document.getElementById("personajes").innerHTML = "";
+        personajes.characters.forEach((personaje) => {
+          document.getElementById("personajes").innerHTML += `
+          <div>
+            <img src="${personaje.images[0]}" alt="${personaje.name}" />
+            <h2>${personaje.name}</h2>
+            <p>Age: ${personaje.personal.birthdate ? personaje.personal.birthdate : 'Not specified'}</p>
+            <p>Clan: ${personaje.personal.clan ? personaje.personal.clan : 'Not specified'}</p>
+          </div>
+        `;
+        });
+      }
+      mostrarPersonajes();
+    </script>
+  </body>
+</html>

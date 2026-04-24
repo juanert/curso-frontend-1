@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <h1 class="text-center">Rick and morty</h1>
+    <div id="personajes" class="grid grid-cols-3 p-8"></div>
+    <div id="botones" class="flex justify-center mt-4"></div>
+  </body>
+  <script>
+    let url = "https://rickandmortyapi.com/api/character?page=1";
+    async function mostrarPersonajes() {
+      let personajes = null;
+      personajes = await fetch(url).then((datos) => {
+        let personajes_json = datos.json();
+        return personajes_json;
+      });
+      document.getElementById("personajes").innerHTML = "";
+      personajes.results.forEach((personaje) => {
+        document.getElementById("personajes").innerHTML += `
+          <div class="border-2 border-gray-300 rounded-lg p-4 m-2">
+            <img src="${personaje.image}" alt="${personaje.name}" class="w-full h-auto rounded-md mb-4" />
+            <h2 class="text-xl font-bold mb-2">${personaje.name}</h2>
+            <p class="text-gray-600">Status: ${personaje.status}</p>
+            <p class="text-gray-600">Species: ${personaje.species}</p>
+          </div>
+        `;
+      });
+      document.getElementById("botones").innerHTML = `
+        <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2" onclick="() => { url = personajes.info.prev; mostrarPersonajes(); console.log("hola")}">Anterior</button>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="() => { url = personajes.info.next; mostrarPersonajes(); }">Siguiente</button>
+      `;
+    }
+    mostrarPersonajes();
+  </script>
+</html>
