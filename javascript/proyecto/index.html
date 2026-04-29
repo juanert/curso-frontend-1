@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Verificar si existe un usuario actual en localhost
+      const currentUser = localStorage.getItem('currentUser');
+      if (!currentUser) {
+        // Si no existe un usuario, redirigir a la página de login
+        window.location.href = 'login.html';
+      } else {
+        // Si existe un usuario, mostrar un mensaje de bienvenida
+        const user = JSON.parse(currentUser);
+        document.body.innerHTML = `<h1>Welcome, ${user.name}!</h1><button id="logout">Logout</button>`;
+        // Manejar el clic en el botón de logout
+        document.getElementById('logout').addEventListener('click', () => {
+          localStorage.removeItem('currentUser');
+          window.location.href = 'login.html';
+        });
+      }
+    </script>
+  </body>
+</html>

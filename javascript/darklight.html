@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <script>
+    let body = document.body;
+    // cargar modo oscuro desde localStorage
+    let darkMode = localStorage.getItem("darkMode") === "true" ? true : false;
+    if (darkMode) {
+      body.style.backgroundColor = "black";
+      body.style.color = "white";
+    } else {
+      body.style.backgroundColor = "white";
+      body.style.color = "black";
+    }
+    function toggleDarkMode() {
+      darkMode = !darkMode;
+      if (darkMode) {
+        body.style.backgroundColor = "black";
+        body.style.color = "white";
+      } else {
+        body.style.backgroundColor = "white";
+        body.style.color = "black";
+      }
+      // guardar modo oscuro en localStorage
+      localStorage.setItem("darkMode", darkMode);
+    }
+    /*
+      SessionStorage
+      Es una API que nos permite almacenar datos de manera local en el navegador, 
+      pero a diferencia de LocalStorage, los datos almacenados en SessionStorage se 
+      eliminan cuando se cierra la pestaña o el navegador.
+    */
+   /*
+      Cookies
+      Son pequeños archivos de texto que se almacenan en el navegador y que pueden ser 
+      utilizados para almacenar información sobre el usuario, como preferencias 
+      o datos de sesión.
+   */
+    let cookieName = "username";
+    let cookieValue = "juan";
+    // crear cookie por 1 dia
+    document.cookie = `${cookieName}=${cookieValue}; max-age=${60 * 60 * 24}`;
+    // leer cookie
+    let cookies = document.cookie.split("; ");
+  </script>
+</body>
+</html>

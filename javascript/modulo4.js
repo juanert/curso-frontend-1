@@ -91,3 +91,11 @@ async function ejemploAsync() {
 /*
   JSON (JavaScript Object Notation)
 */
+
+/*
+  LocalStorage
+  Es una API que nos permite almacenar datos de manera local en el navegador.
+  Los datos se almacenan en formato de texto y pueden ser accedidos desde 
+  cualquier página del mismo dominio.
+*/
+

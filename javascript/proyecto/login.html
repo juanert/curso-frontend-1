@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+      <button type="submit">Login</button>
+    </form>
+    <script>
+      // Verificar si existe un usuario actual en localhost
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        // Si existe un usuario, redirigir a la página de inicio
+        window.location.href = 'index.html';
+      }
+      // Manejar el envío del formulario de login
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        // Obtener los usuarios registrados desde localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        // Buscar el usuario con el nombre de usuario ingresado
+        const user = users.find((user) => user.username === username);
+        if (user && user.password === password) {
+          // Si el usuario existe y la contraseña es correcta, guardar el usuario actual en localStorage
+          // guardar sin la contraseña
+          const { password, ...userWithoutPassword } = user;
+          localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+          // Redirigir a la página de inicio
+          window.location.href = 'index.html';
+        } else {
+          alert('Invalid username or password. Please try again.');
+        }
+      });
+    </script>
+  </body>
+</html>

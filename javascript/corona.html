@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="info"></div>
+  </body>
+  <script>
+    let url = "https://covid-19-statistics.p.rapidapi.com/reports/total?date=2022-04-07";
+    async function mostrarReporte() {
+      // Configuración de la solicitud
+      const options = {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "0f72fb545amshd55cba78a64604cp1e632fjsn672837304d0b",
+          "x-rapidapi-host": "covid-19-statistics.p.rapidapi.com",
+          "Content-Type": "application/json",
+        },
+      };
+      // Inicializo la variable data para almacenar la respuesta de la API
+      let data = null;
+      // Realizo la solicitud a la API utilizando fetch y almaceno la respuesta en la variable data
+      data = await fetch(url, options)
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
+      // Imprimo la variable data en la consola para verificar su contenido
+      console.log(data);
+      // Muestro la información en el HTML
+      document.getElementById("info").innerHTML = `
+        <h2>Reporte de COVID-19 fecha ${data.data.date}</h2>
+        <p>Casos totales: ${data.data.confirmed}</p>
+        <p>Muertes totales: ${data.data.deaths}</p>
+        <p>Recuperados totales: ${data.data.recovered}</p>
+      `;
+    }
+    mostrarReporte();
+  </script>
+</html>

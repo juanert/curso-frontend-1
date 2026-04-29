@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <br />
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+      <br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required />
+      <br />
+      <button type="submit">Register</button>
+    </form>
+    <div>
+      <p>Already have an account? <a href="login.html">Login here</a>.</p>
+    </div>
+    <script>
+      // Verificar si existe un usuario actual en localhost
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        // Si existe un usuario, redirigir a la página de inicio
+        window.location.href = 'index.html';
+      }
+      // Manejar el envío del formulario de registro
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        //Regex para validar todos los datos
+        let regexName = /^[a-zA-Z\sñÑáéíóúÁÉÍÓÚ]+$/;
+        let regexUsername = /^[a-zA-Z0-9]+$/;
+        let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()-+.]).{8,}$/;
+        let errors = [];
+        if (!regexName.test(name)) {
+          errors.push('Name must contain only letters and spaces.');
+        }
+        if (!regexUsername.test(username)) {
+          errors.push('Username must contain only letters and numbers.');
+        }
+        if (!regexEmail.test(email)) {
+          errors.push('Please enter a valid email address.');
+        }
+        if (!regexPassword.test(password)) {
+          errors.push('Password must contain at least 8 characters, including one lowercase letter, one uppercase letter, one number, and one special character.');
+        }
+        if (password !== confirmPassword) {
+          errors.push('Passwords do not match.');
+        }
+        // Validar si el nombre de usuario ya existe en localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        if (users.some(user => user.username === username)) {
+          errors.push('Username already exists. Please choose a different one.');
+        }
+        
+        if (users.some(user => user.email === email)) {
+          errors.push('Email already registered. Please use a different email address.');
+        }
+
+        if (errors.length > 0) {
+          alert(errors.join('\n'));
+          return;
+        }
+        // Crear un nuevo usuario y almacenarlo en localStorage
+        const newUser = { name, username, email, password, role: 'user' };
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        //mostrar mensaje de éxito y redirigir a la página de inicio
+        alert('Registration successful! Redirecting to home page.');
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>
