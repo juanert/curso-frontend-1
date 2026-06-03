@@ -1,65 +1,42 @@
+import Button from "./_ui/button";
+/*
+  Link es un componente de Next.js que se utiliza para crear enlaces entre páginas dentro de la aplicación.
+  Es similar al componente <a> de HTML, pero con algunas características adicionales que lo hacen más 
+  eficiente para la navegación en aplicaciones Next.js.
+  Link permite la navegación sin recargar la página, lo que mejora la experiencia del usuario al hacer 
+  que las transiciones entre páginas sean más rápidas y suaves.
+*/
+import Link from "next/link";
+// Componente para optimizar la carga de imágenes en Next.js
 import Image from "next/image";
+//agregamos SEO a la página
+export const metadata = {
+  title: "Home Page",
+  description: "This is the home page of our Next.js application",
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Hola
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+      <Button text="Hello World" color="green" />
+      <Button text="Presioname" color="red" />
+      <Button text="Hola!" color="blue" />
+      <Link href="/contacto" className="text-blue-500 hover:underline">
+        Ir a Contacto
+      </Link>
+      {/*
+        Traer de la carpeta public e imagenes la imagen zufoto_logo_transp_yellow.png y mostrarla en la página utilizando el componente Image de Next.js, con un ancho de 200px y una altura de 200px.
+      */}
+      <Image
+        src="/imagenes/zufoto_logo_transp_yellow.png"
+        alt="Next.js Logo"
+        width={200}
+        height={200}
+      />
     </div>
   );
 }
+
+/*
+  Hacer el juego de piedra papel o tijeras con React y Tailwind CSS, utilizando componentes funcionales y hooks de React para manejar el estado del juego.
+*/
