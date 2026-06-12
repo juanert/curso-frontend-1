@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0b0c;
+  --foreground: #f4f4ef;
+  --accent: #c8ff00;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-anton);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Flecha animada del indicador de scroll (molécula ScrollCue) */
+@keyframes cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.35;
+  }
+}
+
+.animate-cue {
+  animation: cue-bounce 1.6s ease-in-out infinite;
+}
+
+/* Titular calado (solo contorno) usado en el cierre del héroe */
+.text-stroke {
+  -webkit-text-stroke: 2px var(--accent);
+  color: transparent;
+}
