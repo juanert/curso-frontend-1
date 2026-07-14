@@ -6,6 +6,18 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "skate-shop"],
       "port": 3000
+    },
+    {
+      "name": "sistema",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "sistema", "--", "-p", "3001"],
+      "port": 3001
+    },
+    {
+      "name": "todo-supabase",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--dir", "todo-supabase", "dev", "-p", "3002"],
+      "port": 3002
     }
   ]
 }
